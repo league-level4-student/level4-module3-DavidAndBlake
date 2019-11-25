@@ -1,8 +1,11 @@
 package _02_gotta_catchem_all;
 
+import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 
 class ExceptionsTest {
@@ -10,10 +13,10 @@ class ExceptionsTest {
 	
 	//1. This is an example of how one might test that an exception is thrown.
 	//   It tests that an IndexOutOfBoundsException is thrown 
-	@Test
+	@org.junit.Test
 	public void testIndexOOBException() {
 		int[] vars = {0, 1, 2, 3};
-			
+
 		try {
 			vars[0] = 4;
 			assertArrayEquals(vars, new int[] {4, 1, 2, 3});
@@ -32,9 +35,14 @@ class ExceptionsTest {
 	//3. Complete the JUnit test method to test the divide method.
 	@Test
 	public void testDivideByZeroException() {
-		
+		try{
+			assertEquals(0.0,em.divide(2.3,0.0));
+		}
+		catch(Exception e){
+			System.out.println("The exception was caught.");
+		};
 	}
-	
+
 	//4. In the ExceptionMethods class, write a method called reverseString that takes a
 	//   String and returns the reverse of that String. It should throw an IllegalStateException
 	//   if the String passed in is empty
